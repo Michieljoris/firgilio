@@ -1,0 +1,50 @@
+{
+  "name": "virgilio",
+  "version": "0.12.3",
+  "description": "Virgilio, the next generation module bus",
+  "main": "./lib/virgilio.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/icemobilelab/virgilio.git"
+  },
+  "author": "Icemobile BV",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://github.com/icemobilelab/virgilio/raw/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/icemobilelab/virgilio/issues"
+  },
+  "homepage": "https://github.com/icemobilelab/virgilio",
+  "dependencies": {
+    "bluebird": "^2.3.0",
+    "bunyan": "^1.0.0",
+    "node-uuid": "^1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-docco": "0.0.4",
+    "gulp-example-to-test": "^0.1.0",
+    "gulp-help": "^0.1.6",
+    "gulp-insert": "^0.4.0",
+    "gulp-istanbul": "^0.2.0",
+    "gulp-jshint": "^1.6.1",
+    "gulp-mocha": "^1.0.0",
+    "gulp-replace": "^0.4.0",
+    "gulp-rimraf": "^0.1.0",
+    "gulp-util": "^3.0.0",
+    "jshint-stylish": "^0.4.0",
+    "mocha": "^1.18.2",
+    "must": "^0.12.0",
+    "run-sequence": "^0.3.6",
+    "underscore": "^1.6.0"
+  }
+}
