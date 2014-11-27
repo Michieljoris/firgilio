@@ -1,8 +1,8 @@
 {
-  "name": "virgilio",
+  "name": "firgilio",
   "version": "0.12.3",
-  "description": "Virgilio, the next generation module bus",
-  "main": "./lib/virgilio.js",
+  "description": "Firgilio, the next generation module bus",
+  "main": "./lib/firgilio.js",
   "directories": {
     "example": "examples"
   },
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/icemobilelab/virgilio.git"
+    "url": "git://github.com/michieljoris/firgilio.git"
   },
-  "author": "Icemobile BV",
+  "author": "Icemobile BV/Michiel van Oosten",
   "licenses": [
     {
       "type": "Apache-2.0",
-      "url": "http://github.com/icemobilelab/virgilio/raw/master/LICENSE"
+      "url": "http://github.com/michieljoris/firgilio/raw/master/LICENSE"
     }
   ],
   "bugs": {
-    "url": "https://github.com/icemobilelab/virgilio/issues"
+    "url": "https://github.com/michieljoris/firgilio/issues"
   },
-  "homepage": "https://github.com/icemobilelab/virgilio",
+  "homepage": "https://github.com/michieljoris/firgilio",
   "dependencies": {
     "bluebird": "^2.3.0",
     "bunyan": "^1.0.0",

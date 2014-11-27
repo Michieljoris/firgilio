@@ -19,7 +19,7 @@ function onError(error) {
 // Help module
 require('gulp-help')(gulp);
 
-var newVirgilioRegex = /^(.*Virgilio\()(.*)(\).*)$/m;
+var newFirgilioRegex = /^(.*Firgilio\()(.*)(\).*)$/m;
 var exampleTestHeader = fs.readFileSync('./helpers/example-test-header.js');
 
 gulp.task('test', function(callback) {
@@ -51,8 +51,8 @@ gulp.task('generate-example-tests', function() {
     return gulp.src('./examples/!(generators).js')
         .pipe(exampleToTest())
         .pipe(insert.prepend(exampleTestHeader))
-        .pipe(replace(/Virgilio\(\)/, 'Virgilio({})'))
-        .pipe(replace(newVirgilioRegex, '$1_.extend(loggerConfig, $2)$3'))
+        .pipe(replace(/Firgilio\(\)/, 'Firgilio({})'))
+        .pipe(replace(newFirgilioRegex, '$1_.extend(loggerConfig, $2)$3'))
         .on('error', onError)
         .pipe(gulp.dest('./example-tests'));
 });
@@ -65,7 +65,7 @@ gulp.task('clean-example-tests', function() {
 gulp.task('unit-tests', function() {
     // Modules used in tests must be loaded in this task
     require('must');
-    return gulp.src(['./tests/**/*.test.js'])
+    return gulp.src(['./tests/*.test.js'])
         .pipe(mocha({
             reporter: 'spec'
         }));
@@ -92,7 +92,7 @@ gulp.task('report-istanbul', function() {
 });
 
 gulp.task('docs', 'Build the documentation', function() {
-    gulp.src('lib/virgilio.js')
+    gulp.src('lib/firgilio.js')
         .pipe(docco())
         .pipe(gulp.dest('./documentation'));
 });

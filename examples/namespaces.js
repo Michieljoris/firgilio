@@ -1,34 +1,37 @@
-var Virgilio = require('../');
-var virgilio = new Virgilio();
+var Firgilio = require('../');
+var ns = Firgilio.create();
 
 //Defining actions on namespaces.
-virgilio.defineAction$('animal.human.speak', function() {
+Firgilio.defineAction(ns, 'animal.human.speak', function() {
     return 'Hello world!';
 });
-virgilio.animal.defineAction$('eat', function(food) {
+
+Firgilio.defineAction(ns.animal, 'eat', function(food) {
     this.log$.info('Eating ' + food);
     return 'Om nom nom.';
 });
-virgilio.namespace$('plant').defineAction$('photosynthesis',
+
+var plant = Firgilio.namespace(ns, 'plant');
+Firgilio.defineAction(plant, 'photosynthesis',
                                             function(light) {
     return light ? 'C6H1206' : 'Zzzzzzz';
 });
 
 //Calling an action on a namespace.
-virgilio.animal.human.speak()
+ns.animal.human.speak()
     .then(function(result) {
         console.log(result);    //=> 'Hello world!'
     });
 
 //Calling an action on a lower namespace.
-virgilio.animal.human.eat()
+ns.animal.human.eat('apple')
     .then(function(result) {
         console.log(result);    //=> 'Om nom nom.'
     });
 
 //Calling an action on a sibling namespace fails.
 try {
-    virgilio.animal.photosynthesis();
+    ns.animal.photosynthesis();
 }
 catch(err) {
     console.log(err instanceof TypeError);  //=> true

@@ -13,33 +13,34 @@
 // limitations under the License.
 
 /* global describe, it, beforeEach */
-var Virgilio = require('../');
+var Firgilio = require('../');
 
-describe('Virgilio.prototype.loadModule$()', function() {
-    var virgilio = null;
-    var virgilioOptions = {
+describe('Firgilio.prototype.loadModule$()', function() {
+    var ns = null;
+    var firgilioOptions = {
         logger: {
             streams: []
         }
     };
+    
     beforeEach(function() {
-        virgilio = new Virgilio(virgilioOptions);
+        ns = Firgilio.create(firgilioOptions);
     });
 
     it('loads a named module only once', function() {
         var executeCount = 0;
-        function testModule() {
-            executeCount++;
-        }
-        virgilio
-            .loadModule$(testModule)
-            .loadModule$(testModule);
+            function testModule() {
+                executeCount++;
+            }
+        Firgilio
+            .loadModule(ns, testModule)
+            .loadModule(ns, testModule);
         executeCount.must.equal(1);
     });
 
     it('gets access to the options object', function(done) {
-        virgilio.loadModule$(function(moduleOptions) {
-            moduleOptions.must.be(virgilioOptions);
+        Firgilio.loadModule(ns, function(moduleOptions) {
+            moduleOptions.must.be(firgilioOptions);
             done();
         });
     });
@@ -49,7 +50,7 @@ describe('Virgilio.prototype.loadModule$()', function() {
         nonModules.forEach(function(nonModule) {
             it('throws an error when loading: ' + nonModule, function() {
                 var testFunction = function() {
-                    virgilio.loadModule$(nonModule);
+                    Firgilio.loadModule(ns, nonModule);
                 };
                 testFunction.must.throw(/called with invalid arguments/);
             });

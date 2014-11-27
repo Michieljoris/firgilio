@@ -1,12 +1,10 @@
-var Virgilio = require('../');
-var virgilio = new Virgilio();
+var Firgilio = require('../');
+var ns = new Firgilio.baseNamespace();
 
 //Defining actions through chaining. Only possible with support for generators!
-virgilio
-    .defineAction$(function add(num1, num2) {
-        return num1 + num2;
-    })
-    .defineAction$(function* sum() {
+Firgilio.defineAction(ns, function add(num1, num2) {
+    return num1 + num2; })
+    .defineAction(ns, function* sum() {
         var args = Array.prototype.slice.call(arguments);
         var total = 0;
         var num = null;
@@ -17,7 +15,7 @@ virgilio
     });
 
 //Calling an action that calls another action.
-virgilio.sum(1, 2, 3, 4)
+ns.sum(1, 2, 3, 4)
     .then(function(result) {
         console.log(result);    //=> 10
     });

@@ -1,17 +1,16 @@
-var Virgilio = require('../');
-var virgilio = new Virgilio();
+var Firgilio = require('../');
+var ns = new Firgilio.create();
 
-//Loading a module.
-virgilio.loadModule$(myModule);
+//Loading a module
+Firgilio.loadModule(ns, myModule);
 function myModule() {
-    var virgilio = this;
-    virgilio.defineAction$('answer', function() {
+    Firgilio.defineAction(this, 'answer', function() {
         return 42;
     });
 }
 
 //Calling an action loaded in a module.
-virgilio.answer()
+ns.answer()
     .then(function(result) {
         console.log(result);    //=> 42
     });

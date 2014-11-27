@@ -1,11 +1,11 @@
-var Virgilio = require('../');
+var Firgilio = require('../');
 var options = {
     foo: 'bar'
 };
-var virgilio = new Virgilio(options);
+var ns = Firgilio.baseNamespace(options);
 
 //Getting the configuration in a module.
-virgilio.loadModule$(myModule);
-function myModule(options) {
+Firgilio.loadModule(ns, myModule);
+function myModule(ctx, options) {
     console.log(options.foo);   //=> 'bar'
 }

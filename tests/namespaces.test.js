@@ -1,10 +1,10 @@
 /* global describe, it, beforeEach */
-var Virgilio = require('../');
+var Firgilio = require('../');
 
-describe('Virgilio.prototype.namespace$()', function() {
-    var virgilio = null;
+describe('Firgilio.prototype.namespace$()', function() {
+    var ns = null;
     beforeEach(function() {
-        virgilio = new Virgilio({
+        ns = Firgilio.create({
             logger: {
                 streams: []
             }
@@ -12,26 +12,28 @@ describe('Virgilio.prototype.namespace$()', function() {
     });
 
     it('can reuse names in a namespace-chain', function() {
-        virgilio.namespace$('foo.foo');
-        virgilio.foo.foo.must.exist();
-        virgilio.foo.must.not.be(virgilio.foo.foo);
+        Firgilio.namespace(ns, 'fooz.fooz');
+        ns.fooz.fooz.must.exist();
+        ns.fooz.must.not.be(ns.fooz.fooz);
     });
 
-    it('can give an action the name of a namespce', function() {
-        virgilio.namespace$('foo').defineAction$('foo', function() {});
-        virgilio.foo.foo.must.exist();
-        //virgilio.foo is a namespace.
-        virgilio.foo.must.be.instanceof(Virgilio);
-        //virgilio.foo.foo is an action.
-        virgilio.foo.foo.must.be.a.function();
+    it('can give an action the name of a namespace', function() {
+        var fooz = Firgilio.namespace(ns, 'fooz');
+        Firgilio.createAction(ns, fooz, 'fooz', function() {});
+        ns.fooz.fooz.must.exist();
+        //Firgilio.fooz is a namespace.
+        // ns.fooz.must.be.instanceof(Firgilio);
+        ns.fooz.name$.must.exist();
+        //Firgilio.fooz.fooz is an action.
+        ns.fooz.fooz.must.be.a.function();
     });
 
     it('will not overwrite with a namespace an existing property', function() {
         function testFunc() {
-            virgilio.foo = {};
-            virgilio.namespace$('foo');
+            ns.foo = {};
+            Firgilio.namespace(ns, 'foo');
         }
-        testFunc.must.throw(virgilio.IllegalNamespaceError);
+        testFunc.must.throw(Firgilio.IllegalNamespaceError);
     });
 
     describe('Throws an error when called with wrong arguments', function() {
@@ -42,7 +44,7 @@ describe('Virgilio.prototype.namespace$()', function() {
         ];
         testCases.forEach(function(args) {
             function testFunc() {
-                virgilio.namespace$.apply(virgilio, args);
+                Firgilio.namespace(ns, args);
             }
             it('Called with ' + args.join(', '), function() {
                 testFunc.must.throw(/called with invalid arguments/);

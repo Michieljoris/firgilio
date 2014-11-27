@@ -1,31 +1,32 @@
 /* global describe, it, beforeEach */
-var format = require('util').format;
-var Virgilio = require('../');
+// var format = require('util').format;
+var Firgilio = require('../');
 
-describe('Virgilio.prototype.extend$()', function() {
-    var virgilio = null;
-    beforeEach(function() {
-        virgilio = new Virgilio({
+describe('Firgilio.extend()', function() {
+    var ns = null;
+    beforeEach(function(done) {
+        ns = Firgilio.create({
             logger: {
                 streams: []
             }
         });
+        done();
+    });
+    
+    it('Can call extend with a named function', function () {
+        ns.someFun = function() { return 'bar'; };
+        Firgilio.extend(ns, function someFun(arg) {
+            return  arg + ns.someFun.super$();
+        });
+        ns.someFun('foo').must.equal('foobar');
     });
 
-    it('Can call extend$ with a named function', function() {
-        virgilio.extend$(function namespace$(path) {
-            path = 'foo.' + path;
-            return namespace$.super$.call(this, path);
+    it('Can call extend with a seperate name and function', function() {
+        ns.someFun = function() { return 'bar'; };
+        Firgilio.extend(ns, 'someFun', function (arg) {
+            return  arg + ns.someFun.super$();
         });
-        virgilio.namespace$('bar').must.equal(virgilio.foo.bar);
-    });
-
-    it('Can call extend$ with a seperate name and function', function() {
-        virgilio.extend$('namespace$', function prefixFoo(path) {
-            path = 'foo.' + path;
-            return prefixFoo.super$.call(this, path);
-        });
-        virgilio.namespace$('bar').must.equal(virgilio.foo.bar);
+        ns.someFun('foo').must.equal('foobar');
     });
 
     describe('Throws an error when called with wrong arguments', function() {
@@ -36,7 +37,7 @@ describe('Virgilio.prototype.extend$()', function() {
         ];
         testCases.forEach(function(args) {
             function testFunc() {
-                virgilio.extend$.apply(virgilio, args);
+                Firgilio.extend(ns, args);
             }
             it('Called with ' + args.join(', '), function() {
                 testFunc.must.throw(/called with invalid arguments/);

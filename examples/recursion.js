@@ -1,8 +1,8 @@
-var Virgilio = require('../');
-var virgilio = new Virgilio();
+var Firgilio = require('../');
+var ns = new Firgilio.create();
 
 //Defining and calling a recursive action.
-virgilio.defineAction$('factorial', function(number) {
+Firgilio.defineAction(ns, 'factorial', function(number) {
     if (number <= 1) {
         return 1;
     }
@@ -11,7 +11,7 @@ virgilio.defineAction$('factorial', function(number) {
     });
 });
 
-virgilio.factorial(3)
+ns.factorial(3)
     .then(function(result) {
         console.log(result);    //=> 6
     });

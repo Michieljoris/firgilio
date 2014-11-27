@@ -1,10 +1,10 @@
 /* global describe, it, beforeEach */
-var Virgilio = require('../');
+var Firgilio = require('../');
 
-describe('Virgilio.prototype.registerError$()', function() {
-    var virgilio = null;
+describe('Firgilio.registerError()', function() {
+    var ns = null;
     beforeEach(function() {
-        virgilio = new Virgilio({
+        ns = Firgilio.create({
             logger: {
                 streams: []
             }
@@ -12,18 +12,18 @@ describe('Virgilio.prototype.registerError$()', function() {
     });
 
     it('Can create an error with just a name', function() {
-        virgilio.registerError$('FooError');
-        var error = new virgilio.FooError('test');
+        Firgilio.registerError(ns, 'FooError');
+        var error = new ns.FooError('test');
         error.name.must.be('FooError');
         error.stack.must.not.be.null();
         error.must.be.instanceof(Error);
     });
 
     it('Can create an error with a named function', function() {
-        virgilio.registerError$(function FooError(arg) {
+        Firgilio.registerError(ns, function FooError(arg) {
             this.arg = arg;
         });
-        var error = new virgilio.FooError('test');
+        var error = new ns.FooError('test');
         error.name.must.be('FooError');
         error.stack.must.not.be.null();
         error.must.be.instanceof(Error);
@@ -31,10 +31,10 @@ describe('Virgilio.prototype.registerError$()', function() {
     });
 
     it('Can create an error with a name and init function', function() {
-        virgilio.registerError$('FooError', function errorInit(arg) {
+        Firgilio.registerError(ns, 'FooError', function errorInit(arg) {
             this.arg = arg;
         });
-        var error = new virgilio.FooError('test');
+        var error = new ns.FooError('test');
         error.name.must.be('FooError');
         error.stack.must.not.be.null();
         error.must.be.instanceof(Error);
@@ -43,10 +43,10 @@ describe('Virgilio.prototype.registerError$()', function() {
 
     it('Cannot register an error with the same name twice', function() {
         function testFunc() {
-            virgilio.registerError$('FooError', function() {});
-            virgilio.registerError$(function FooError() {});
+            Firgilio.registerError(ns, 'FooError', function() {});
+            Firgilio.registerError(ns, function FooError() {});
         }
-        testFunc.must.throw(virgilio.DuplicateErrorRegistrationError);
+        testFunc.must.throw(Firgilio.DuplicateErrorRegistrationError);
     });
 
     describe('Throws an error when called with wrong arguments', function() {
@@ -57,7 +57,7 @@ describe('Virgilio.prototype.registerError$()', function() {
         ];
         testCases.forEach(function(args) {
             function testFunc() {
-                virgilio.registerError$.apply(virgilio, args);
+                Firgilio.registerError(ns, args);
             }
             it('Called with ' + args.join(', '), function() {
                 testFunc.must.throw(/called with invalid arguments/);
