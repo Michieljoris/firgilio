@@ -8,7 +8,7 @@ The whole code is shorter by about 50 lines. The errors could get rid of all the
 
 What follows is copied for the firgilio repository, adapted for Firgilio.
 
-<a href="https://github.com/icemobilelab/firgilio"><img src="https://raw.githubusercontent.com/icemobilelab/firgilio/master/images/firgilio.png" align="center"  height="300" width="600"/></a>
+<a href="https://github.com/michiejoris/firgilio"><img src="https://raw.githubusercontent.com/michieljoris/firgilio/master/images/firgilio.png" align="center"  height="300" width="600"/></a>
 
 # Firgilio
 [![wercker status](https://app.wercker.com/status/69a7f421e9d59612238df4e8af206558/s/master "wercker status")](https://app.wercker.com/project/bykey/69a7f421e9d59612238df4e8af206558)
@@ -20,9 +20,9 @@ No refactoring needed.
 
 * [Features](#features)
 * [Getting Started](#getting-started)
-* [Examples](https://github.com/michieljorislab/firgilio/tree/master/examples)
-* [API Reference](https://github.com/michieljorislab/firgilio/wiki/API)
-* [Development](https://github.com/michieljorislab/firgilio/wiki/Development)
+* [Examples](https://github.com/michieljoris/firgilio/tree/master/examples)
+* [API Reference](https://github.com/michieljoris/firgilio/wiki/API)
+* [Development](https://github.com/michieljoris/firgilio/wiki/Development)
 * [More Tags](#more-tags)
 
 ## Features
@@ -59,8 +59,8 @@ ns.number.add(3, 6).then(function(result) {
 ```
 
 ## More tags
-[![Code Climate](https://codeclimate.com/github/icemobilelab/firgilio/badges/gpa.svg)](https://codeclimate.com/github/icemobilelab/firgilio)
-[![Test Coverage](https://codeclimate.com/github/icemobilelab/firgilio/badges/coverage.svg)](https://codeclimate.com/github/icemobilelab/firgilio)
-[![Dependency Status](https://gemnasium.com/icemobilelab/firgilio.svg)](https://gemnasium.com/icemobilelab/firgilio)
+[![Code Climate](https://codeclimate.com/github/michieljoris/firgilio/badges/gpa.svg)](https://codeclimate.com/github/michieljoris/firgilio)
+[![Test Coverage](https://codeclimate.com/github/michieljoris/firgilio/badges/coverage.svg)](https://codeclimate.com/github/michieljoris/firgilio)
+[![Dependency Status](https://gemnasium.com/michieljoris/firgilio.svg)](https://gemnasium.com/michieljoris/firgilio)
 
 We dedicate this Library to the ServiceRegistrar, the EigenServices and the PuppetDresser.
