@@ -1,12 +1,12 @@
-A functional first draft rewrite of [firgilio](https://github.com/icemobilelab/firgilio) at icemobilabs. No more prototype, this and new to emulate classes, but use of closures and pure functions.
+A first draft rewrite of [virgilio](https://github.com/icemobilelab/virgilio) at icemobilabs in a bit more functional style. No more prototype, this and new to emulate classes, but use of closures and pure functions.
 
 Prototype is still being used to link namespaces.
 
-All examples and tests are working, with some slight modifications to a functional style.
+All examples and tests are working, but of course modified to a functional style.
 
-The whole code is shorter by about 50 lines. The errors could get rid of all the prototype and constructor wrangling, but I made it work to pass the tests.
+The whole code is shorter by about 50 lines. The errors code could benefit from getting rid of all the prototype and constructor wrangling, but I made it work to pass the tests.
 
-What follows is copied for the firgilio repository, adapted for Firgilio.
+What follows is copied from the Virgilio repository, adapted for Firgilio.
 
 <a href="https://github.com/michiejoris/firgilio"><img src="https://raw.githubusercontent.com/michieljoris/firgilio/master/images/firgilio.png" align="center"  height="300" width="600"/></a>
 
