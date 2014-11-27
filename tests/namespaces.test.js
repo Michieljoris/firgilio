@@ -19,7 +19,7 @@ describe('Firgilio.prototype.namespace$()', function() {
 
     it('can give an action the name of a namespace', function() {
         var fooz = Firgilio.namespace(ns, 'fooz');
-        Firgilio.createAction(ns, fooz, 'fooz', function() {});
+        Firgilio.createAction(fooz, 'fooz', function() {});
         ns.fooz.fooz.must.exist();
         //Firgilio.fooz is a namespace.
         // ns.fooz.must.be.instanceof(Firgilio);

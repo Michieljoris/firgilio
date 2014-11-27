@@ -15,7 +15,7 @@
 /* global describe, it, beforeEach */
 var Firgilio = require('../');
 
-describe('Firgilio.prototype.loadModule$()', function() {
+describe('Firgilio.loadModule()', function() {
     var ns = null;
     var firgilioOptions = {
         logger: {
@@ -39,7 +39,7 @@ describe('Firgilio.prototype.loadModule$()', function() {
     });
 
     it('gets access to the options object', function(done) {
-        Firgilio.loadModule(ns, function(moduleOptions) {
+        Firgilio.loadModule(ns, function(ctx, moduleOptions) {
             moduleOptions.must.be(firgilioOptions);
             done();
         });
